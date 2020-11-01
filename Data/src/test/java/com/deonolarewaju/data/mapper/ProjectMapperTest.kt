@@ -1,0 +1,42 @@
+package com.deonolarewaju.data.mapper
+
+import com.deonolarewaju.data.model.ProjectEntity
+import com.deonolarewaju.data.test.factory.ProjectFactory
+import com.deonolarewaju.domain.model.Project
+import org.junit.Test
+import org.junit.runner.RunWith
+import org.junit.runners.JUnit4
+import kotlin.test.assertEquals
+
+@RunWith(JUnit4::class)
+class ProjectMapperTest {
+    private val mapper = ProjectMapper()
+
+    @Test
+    fun mapFromEntityMapsData(){
+        val entity = ProjectFactory.makeProjectEntity()
+        val model = mapper.mapFromEntity(entity)
+
+        assertEqualData(entity, model)
+    }
+
+    @Test
+    fun mapToEntityMapsData(){
+        val model = ProjectFactory.makeProject()
+        val entity = mapper.mapToEntity(model)
+
+        assertEqualData(entity, model)
+    }
+
+    private fun assertEqualData(entity: ProjectEntity, model: Project) {
+        assertEquals(entity.id, model.id)
+        assertEquals(entity.name, model.name)
+        assertEquals(entity.fullName, model.fullName)
+        assertEquals(entity.starCount, entity.starCount)
+        assertEquals(entity.dateCreated, entity.dateCreated)
+        assertEquals(entity.ownerName, model.ownerName)
+        assertEquals(entity.ownerAvatar, model.ownerAvatar)
+        assertEquals(entity.isBookmarked, model.isBookmarked)
+    }
+
+}

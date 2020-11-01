@@ -1,0 +1,6 @@
+include ':Cache'
+include ':Remote'
+include ':Data'
+include ':Domain'
+include ':app'
+rootProject.name = "Github-trending-repos"
