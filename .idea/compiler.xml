@@ -4,6 +4,7 @@
     <bytecodeTargetLevel>
       <module name="Data" target="1.7" />
       <module name="Domain" target="1.7" />
+      <module name="Presentation" target="1.7" />
       <module name="Remote" target="1.7" />
     </bytecodeTargetLevel>
   </component>
