@@ -119,30 +119,30 @@ ext {
     ]
 
 
-//
-//    presentationDependencies = [
-//            daggerCompiler:     "com.google.dagger:dagger-compiler:${daggerVersion}",
-//            dagger:             "com.google.dagger:dagger:${daggerVersion}",
-//            rxKotlin:           "io.reactivex.rxjava2:rxkotlin:${rxKotlinVersion}",
-//            kotlin:             "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${kotlinVersion}",
-//            rxAndroid:          "io.reactivex.rxjava2:rxandroid:${rxAndroidVersion}",
-//            javaxAnnotation:    "javax.annotation:jsr250-api:${javaxAnnotationVersion}",
-//            javaxInject:        "javax.inject:javax.inject:${javaxInjectVersion}",
-//            androidAnnotations: "com.android.support:support-annotations:${androidAnnotationsVersion}",
-//            archRuntime:        "android.arch.lifecycle:runtime:${archCompVersion}",
-//            archExtensions:     "android.arch.lifecycle:extensions:${archCompVersion}",
-//            archCompiler:       "android.arch.lifecycle:compiler:${archCompVersion}",
-//    ]
-//
-//    presentationTestDependencies = [
-//            junit:              "junit:junit:${jUnitVersion}",
-//            kotlinJUnit:        "org.jetbrains.kotlin:kotlin-test-junit:${kotlin_version}",
-//            assertj:            "org.assertj:assertj-core:${assertJVersion}",
-//            mockito:            "com.nhaarman:mockito-kotlin:${mockitoKotlinVersion}",
-//            robolectric:        "org.robolectric:robolectric:${robolectricVersion}",
-//            archTesting:        "android.arch.core:core-testing:${archCompVersion}",
-//    ]
-//
+
+    presentationDependencies = [
+            daggerCompiler:     "com.google.dagger:dagger-compiler:${daggerVersion}",
+            dagger:             "com.google.dagger:dagger:${daggerVersion}",
+            rxKotlin:           "io.reactivex.rxjava2:rxkotlin:${rxKotlinVersion}",
+            kotlin:             "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${kotlinVersion}",
+            rxAndroid:          "io.reactivex.rxjava2:rxandroid:${rxAndroidVersion}",
+            javaxAnnotation:    "javax.annotation:jsr250-api:${javaxAnnotationVersion}",
+            javaxInject:        "javax.inject:javax.inject:${javaxInjectVersion}",
+            androidAnnotations: "com.android.support:support-annotations:${androidAnnotationsVersion}",
+            archRuntime:        "android.arch.lifecycle:runtime:${archCompVersion}",
+            archExtensions:     "android.arch.lifecycle:extensions:${archCompVersion}",
+            archCompiler:       "android.arch.lifecycle:compiler:${archCompVersion}",
+    ]
+
+    presentationTestDependencies = [
+            junit:              "junit:junit:${jUnitVersion}",
+            kotlinJUnit:        "org.jetbrains.kotlin:kotlin-test-junit:${kotlin_version}",
+            assertj:            "org.assertj:assertj-core:${assertJVersion}",
+            mockito:            "com.nhaarman:mockito-kotlin:${mockitoKotlinVersion}",
+            robolectric:        "org.robolectric:robolectric:${roboelectricVersion}",
+            archTesting:        "android.arch.core:core-testing:${archCompVersion}",
+    ]
+
 //    mobileUiDependencies = [
 //            daggerCompiler:     "com.google.dagger:dagger-compiler:${daggerVersion}",
 //            dagger:             "com.google.dagger:dagger:${daggerVersion}",
