@@ -2,12 +2,11 @@ apply plugin: 'java-library'
 apply plugin: 'kotlin'
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
     def domainDependencies = rootProject.ext.domainDependencies
     def domainTestDependencies = rootProject.ext.domainTestDependencies
 
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:1.3.72"
     implementation domainDependencies.javaxAnnotation
     implementation domainDependencies.javaxInject
     implementation domainDependencies.rxJava
@@ -15,6 +14,7 @@ dependencies {
     testImplementation domainTestDependencies.junit
     testImplementation domainTestDependencies.mockito
     testImplementation domainTestDependencies.assertj
+    testImplementation domainTestDependencies.mockitoInline
 }
 
 sourceCompatibility = "1.7"

@@ -18,6 +18,7 @@
             <option value="$PROJECT_DIR$/Presentation" />
             <option value="$PROJECT_DIR$/Remote" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/mobile-ui" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

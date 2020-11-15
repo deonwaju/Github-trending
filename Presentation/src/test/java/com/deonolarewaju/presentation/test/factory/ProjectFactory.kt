@@ -1,6 +1,7 @@
+package com.deonolarewaju.presentation.test.factory
+
 import com.deonolarewaju.domain.model.Project
 import com.deonolarewaju.presentation.model.ProjectView
-import com.deonolarewaju.presentation.test.factory.DataFactory
 
 object ProjectFactory {
 
