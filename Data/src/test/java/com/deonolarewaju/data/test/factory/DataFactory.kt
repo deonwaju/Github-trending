@@ -1,11 +1,11 @@
-package com.deonolarewaju.data.test.factory
+package co.joebirch.data.test.factory
 
 import java.util.*
 import java.util.concurrent.ThreadLocalRandom
 
 object DataFactory {
 
-    fun randomString(): String{
+    fun randomString(): String {
         return UUID.randomUUID().toString()
     }
 

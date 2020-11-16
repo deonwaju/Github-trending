@@ -3,7 +3,7 @@ package com.deonolarewaju.mobile_ui.injection.module
 import android.arch.lifecycle.ViewModel
 import android.arch.lifecycle.ViewModelProvider
 import com.deonolarewaju.mobile_ui.injection.ViewModelFactory
-import com.deonolarewaju.presentation.BrowseBookmarkedViewModel
+import com.deonolarewaju.presentation.BrowseBookmarkedProjectsViewModel
 import com.deonolarewaju.presentation.BrowseProjectsViewModel
 import dagger.Binds
 import dagger.MapKey
@@ -17,14 +17,14 @@ abstract class PresentationModule {
     @Binds
     @IntoMap
     @ViewModelKey(BrowseProjectsViewModel::class)
-    abstract fun bindBrowseProjectsViewModel(viewModel: BrowseBookmarkedViewModel): ViewModel
+    abstract fun bindBrowseProjectsViewModel(viewModel: BrowseProjectsViewModel): ViewModel
 
     @Binds
     @IntoMap
-    @ViewModelKey(BrowseBookmarkedViewModel::class)
+    @ViewModelKey(BrowseBookmarkedProjectsViewModel::class)
     abstract fun bindBrowseBookmarkedProjectsViewModel(
-        viewModel: BrowseBookmarkedViewModel
-    ): ViewModel
+            viewModel: BrowseBookmarkedProjectsViewModel): ViewModel
+
 
     @Binds
     abstract fun bindViewModelFactory(factory: ViewModelFactory): ViewModelProvider.Factory

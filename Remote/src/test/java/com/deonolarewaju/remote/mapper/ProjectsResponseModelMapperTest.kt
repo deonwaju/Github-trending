@@ -1,33 +1,28 @@
 package com.deonolarewaju.remote.mapper
 
-import com.deonolarewaju.mapper.ProjectResponseModelMapper
-import com.deonolarewaju.remote.test.factory.ProjectDataFactory
+import com.deonolarewaju.remote.test.factory.ProjectFactory
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.JUnit4
 import kotlin.test.assertEquals
 
-
 @RunWith(JUnit4::class)
-class ProjectsResponseModelMapperTest {
+open class ProjectsResponseModelMapperTest {
 
-    private val mapper = ProjectResponseModelMapper()
+    private val mapper = ProjectsResponseModelMapper()
 
     @Test
     fun mapFromModelMapsData() {
-        val model =
-            ProjectDataFactory.makeProject()
+        val model = ProjectFactory.makeProjectModel()
         val entity = mapper.mapFromModel(model)
 
-        assertEquals(model.id, entity.id)
         assertEquals(model.name, entity.name)
         assertEquals(model.fullName, entity.fullName)
+        assertEquals(model.id, entity.id)
         assertEquals(model.starCount.toString(), entity.starCount)
         assertEquals(model.dateCreated, entity.dateCreated)
         assertEquals(model.owner.ownerName, entity.ownerName)
         assertEquals(model.owner.ownerAvatar, entity.ownerAvatar)
-
-
     }
 
 }

@@ -1,17 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.deonolarewaju.mobile_ui">
+
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:name=".GithubTrendingApplication"
+        android:name="com.deonolarewaju.mobile_ui.GithubTrendingApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
         <activity
-            android:name=".browse.BrowseActivity"
+            android:name="com.deonolarewaju.mobile_ui.browse.BrowseActivity"
             android:icon="@mipmap/ic_launcher"
             android:label="@string/app_name">
             <intent-filter>
@@ -23,8 +26,9 @@
         </activity>
 
         <activity
-            android:name=".bookmarked.BookmarkedActivity"
+            android:name="com.deonolarewaju.mobile_ui.bookmarked.BookmarkedActivity"
             android:label="@string/title_bookmarked" />
+
     </application>
 
 </manifest>

@@ -1,9 +1,1 @@
-include ':mobile-ui'
-include ':Presentation'
-include ':Presentation'
-include ':Cache'
-include ':Remote'
-include ':Data'
-include ':Domain'
-include ':app'
-rootProject.name = "Github-trending-repos"
+include ':Domain', ':Data', ':Remote', ':cache', ':Presentation', ':mobile-ui'

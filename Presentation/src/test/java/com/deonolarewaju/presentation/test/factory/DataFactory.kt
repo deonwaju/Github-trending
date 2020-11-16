@@ -1,9 +1,10 @@
-package com.deonolarewaju.presentation.test.factory
+package co.joebirch.presentation.test.factory
 
 import java.util.*
 import java.util.concurrent.ThreadLocalRandom
 
 object DataFactory {
+
     fun randomString(): String {
         return UUID.randomUUID().toString()
     }
@@ -19,4 +20,5 @@ object DataFactory {
     fun randomBoolean(): Boolean {
         return Math.random() < 0.5
     }
+
 }

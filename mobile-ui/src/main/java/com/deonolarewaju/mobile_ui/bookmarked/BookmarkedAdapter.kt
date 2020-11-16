@@ -12,28 +12,14 @@ import com.deonolarewaju.mobile_ui.R
 import com.deonolarewaju.mobile_ui.model.Project
 import javax.inject.Inject
 
-class BookmarkedAdapter @Inject constructor() :
-    RecyclerView.Adapter<BookmarkedAdapter.ViewHolder>() {
+class BookmarkedAdapter @Inject constructor() : RecyclerView.Adapter<BookmarkedAdapter.ViewHolder>() {
 
     var projects: List<Project> = arrayListOf()
 
-    inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        var avatarImage: ImageView
-        var ownerNameText: TextView
-        var projectNameText: TextView
-
-        init {
-            avatarImage = view.findViewById(R.id.image_avatar)
-            ownerNameText = view.findViewById(R.id.text_owner_name)
-            projectNameText = view.findViewById(R.id.text_project_name)
-        }
-
-    }
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val itemView = LayoutInflater
-            .from(parent.context)
-            .inflate(R.layout.item_bookmarked_project, parent, false)
+                .from(parent.context)
+                .inflate(R.layout.item_bookmarked_project, parent, false)
         return ViewHolder(itemView)
     }
 
@@ -47,8 +33,20 @@ class BookmarkedAdapter @Inject constructor() :
         holder.projectNameText.text = project.fullName
 
         Glide.with(holder.itemView.context)
-            .load(project.ownerAvatar)
-            .apply(RequestOptions.circleCropTransform())
-            .into(holder.avatarImage)
+                .load(project.ownerAvatar)
+                .apply(RequestOptions.circleCropTransform())
+                .into(holder.avatarImage)
+    }
+
+    inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        var avatarImage: ImageView
+        var ownerNameText: TextView
+        var projectNameText: TextView
+
+        init {
+            avatarImage = view.findViewById(R.id.image_owner_avatar)
+            ownerNameText = view.findViewById(R.id.text_owner_name)
+            projectNameText = view.findViewById(R.id.text_project_name)
+        }
     }
 }

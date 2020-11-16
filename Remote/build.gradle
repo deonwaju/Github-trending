@@ -1,13 +1,10 @@
-apply plugin: 'java-library'
 apply plugin: 'kotlin'
 
 dependencies {
-
     def remoteDependencies = rootProject.ext.remoteDependencies
     def remoteTestDependencies = rootProject.ext.remoteTestDependencies
 
     implementation project(':Data')
-
 
     implementation remoteDependencies.javaxAnnotation
     implementation remoteDependencies.kotlin
@@ -24,8 +21,6 @@ dependencies {
     implementation remoteTestDependencies.kotlinJUnit
     implementation remoteTestDependencies.mockito
     implementation remoteTestDependencies.assertj
-
-
 }
 
 sourceCompatibility = "1.7"

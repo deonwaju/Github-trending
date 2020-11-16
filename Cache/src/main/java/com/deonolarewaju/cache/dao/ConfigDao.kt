@@ -17,5 +17,4 @@ abstract class ConfigDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     abstract fun insertConfig(config: Config)
 
-
 }

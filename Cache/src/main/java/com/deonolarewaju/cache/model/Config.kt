@@ -6,7 +6,6 @@ import com.deonolarewaju.cache.db.ConfigConstants
 
 @Entity(tableName = ConfigConstants.TABLE_NAME)
 data class Config(
-    @PrimaryKey(autoGenerate = true)
-    var id: Int = -1,
-    val lastCachedTime: Long
-)
+        @PrimaryKey(autoGenerate = true)
+        var id: Int = -1,
+        var lastCacheTime: Long)

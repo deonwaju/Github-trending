@@ -10,10 +10,11 @@ import kotlin.test.assertEquals
 
 @RunWith(JUnit4::class)
 class ProjectMapperTest {
+
     private val mapper = ProjectMapper()
 
     @Test
-    fun mapFromEntityMapsData(){
+    fun mapFromEntityMapsData() {
         val entity = ProjectFactory.makeProjectEntity()
         val model = mapper.mapFromEntity(entity)
 
@@ -21,19 +22,20 @@ class ProjectMapperTest {
     }
 
     @Test
-    fun mapToEntityMapsData(){
+    fun mapToEntityMapsData() {
         val model = ProjectFactory.makeProject()
         val entity = mapper.mapToEntity(model)
 
         assertEqualData(entity, model)
     }
 
-    private fun assertEqualData(entity: ProjectEntity, model: Project) {
+    private fun assertEqualData(entity: ProjectEntity,
+                                model: Project) {
         assertEquals(entity.id, model.id)
         assertEquals(entity.name, model.name)
         assertEquals(entity.fullName, model.fullName)
-        assertEquals(entity.starCount, entity.starCount)
-        assertEquals(entity.dateCreated, entity.dateCreated)
+        assertEquals(entity.starCount, model.starCount)
+        assertEquals(entity.dateCreated, model.dateCreated)
         assertEquals(entity.ownerName, model.ownerName)
         assertEquals(entity.ownerAvatar, model.ownerAvatar)
         assertEquals(entity.isBookmarked, model.isBookmarked)

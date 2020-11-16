@@ -11,8 +11,7 @@ import android.view.View
 import com.deonolarewaju.mobile_ui.R
 import com.deonolarewaju.mobile_ui.injection.ViewModelFactory
 import com.deonolarewaju.mobile_ui.mapper.ProjectViewMapper
-import com.deonolarewaju.mobile_ui.model.Project
-import com.deonolarewaju.presentation.BrowseBookmarkedViewModel
+import com.deonolarewaju.presentation.BrowseBookmarkedProjectsViewModel
 import com.deonolarewaju.presentation.model.ProjectView
 import com.deonolarewaju.presentation.state.Resource
 import com.deonolarewaju.presentation.state.ResourceState
@@ -24,15 +23,11 @@ class BookmarkedActivity : AppCompatActivity() {
 
     @Inject
     lateinit var adapter: BookmarkedAdapter
-
     @Inject
     lateinit var mapper: ProjectViewMapper
-
     @Inject
     lateinit var viewModelFactory: ViewModelFactory
-
-    @Inject
-    lateinit var browseViewModel: BrowseBookmarkedViewModel
+    lateinit var browseViewModel: BrowseBookmarkedProjectsViewModel
 
     companion object {
         fun getStartIntent(context: Context): Intent {
@@ -46,19 +41,19 @@ class BookmarkedActivity : AppCompatActivity() {
         AndroidInjection.inject(this)
 
         browseViewModel = ViewModelProviders.of(this, viewModelFactory)
-            .get(BrowseBookmarkedViewModel::class.java)
+                .get(BrowseBookmarkedProjectsViewModel::class.java)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         setupBrowseRecycler()
     }
 
     override fun onStart() {
         super.onStart()
-        browseViewModel.getProjects().observe(this, Observer<Resource<List<ProjectView>>> {
-            it?.let {
-                handleDataState(it)
-            }
-
-        })
+        browseViewModel.getProjects().observe(this,
+                Observer<Resource<List<ProjectView>>> {
+                    it?.let {
+                        handleDataState(it)
+                    }
+                })
         browseViewModel.fetchProjects()
     }
 
@@ -70,16 +65,10 @@ class BookmarkedActivity : AppCompatActivity() {
     private fun handleDataState(resource: Resource<List<ProjectView>>) {
         when (resource.status) {
             ResourceState.SUCCESS -> {
-//                setupScreenForSuccess(resource.data?.map {
-//                    mapper.mapToView(it)
-//                })
                 progress.visibility = View.GONE
                 recycler_projects.visibility = View.VISIBLE
-
                 resource.data?.let {
-                    adapter.projects = it.map {
-                        mapper.mapToView(it)
-                    }
+                    adapter.projects = it.map { mapper.mapToView(it) }
                     adapter.notifyDataSetChanged()
                 }
             }
@@ -88,15 +77,5 @@ class BookmarkedActivity : AppCompatActivity() {
                 recycler_projects.visibility = View.GONE
             }
         }
-    }
-
-    private fun setupScreenForSuccess(projects: List<Project>?) {
-        projects?.let {
-            adapter.projects = it
-            adapter.notifyDataSetChanged()
-        } ?: run {
-
-        }
-
     }
 }

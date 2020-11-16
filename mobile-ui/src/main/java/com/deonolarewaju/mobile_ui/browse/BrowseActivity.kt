@@ -27,7 +27,6 @@ class BrowseActivity : AppCompatActivity() {
     lateinit var browseAdapter: BrowseAdapter
     @Inject
     lateinit var mapper: ProjectViewMapper
-
     @Inject
     lateinit var viewModelFactory: ViewModelFactory
     private lateinit var browseViewModel: BrowseProjectsViewModel
@@ -35,14 +34,23 @@ class BrowseActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_browse)
-
         AndroidInjection.inject(this)
 
         browseViewModel = ViewModelProviders.of(this, viewModelFactory)
-            .get(BrowseProjectsViewModel::class.java)
-
+                .get(BrowseProjectsViewModel::class.java)
 
         setupBrowseRecycler()
+    }
+
+    override fun onStart() {
+        super.onStart()
+        browseViewModel.getProjects().observe(this,
+                Observer<Resource<List<ProjectView>>> {
+                    it?.let {
+                        handleDataState(it)
+                    }
+                })
+        browseViewModel.fetchProjects()
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -58,17 +66,6 @@ class BrowseActivity : AppCompatActivity() {
             }
             else -> super.onOptionsItemSelected(item)
         }
-    }
-
-    override fun onStart() {
-        super.onStart()
-        browseViewModel.getProjects().observe(this,
-            Observer<Resource<List<ProjectView>>> {
-                it?.let {
-                    handleDataState(it)
-                }
-            })
-        browseViewModel.fetchProjects()
     }
 
     private fun setupBrowseRecycler() {
@@ -104,11 +101,12 @@ class BrowseActivity : AppCompatActivity() {
 
     private val projectListener = object : ProjectListener {
         override fun onBookmarkedProjectClicked(projectId: String) {
-            browseViewModel.unBookmarkProject(projectId)
+            browseViewModel.unbookmarkProject(projectId)
         }
 
         override fun onProjectClicked(projectId: String) {
             browseViewModel.bookmarkProject(projectId)
         }
     }
+
 }

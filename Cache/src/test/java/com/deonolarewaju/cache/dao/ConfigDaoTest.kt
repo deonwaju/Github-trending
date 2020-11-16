@@ -2,7 +2,7 @@ package com.deonolarewaju.cache.dao
 
 import android.arch.core.executor.testing.InstantTaskExecutorRule
 import android.arch.persistence.room.Room
-import com.deonolarewaju.cache.db.ProjectDataBase
+import com.deonolarewaju.cache.db.ProjectsDatabase
 import com.deonolarewaju.cache.test.factory.ConfigDataFactory
 import org.junit.After
 import org.junit.Rule
@@ -19,11 +19,10 @@ class ConfigDaoTest {
     var instantTaskExecutorRule = InstantTaskExecutorRule()
 
     private val database = Room.inMemoryDatabaseBuilder(
-        RuntimeEnvironment.application.applicationContext,
-        ProjectDataBase::class.java
-    )
-        .allowMainThreadQueries()
-        .build()
+            RuntimeEnvironment.application.applicationContext,
+            ProjectsDatabase::class.java)
+            .allowMainThreadQueries()
+            .build()
 
     @After
     fun clearDb() {

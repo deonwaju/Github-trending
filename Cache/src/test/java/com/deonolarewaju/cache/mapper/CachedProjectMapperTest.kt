@@ -1,8 +1,8 @@
-package com.deonolarewaju.cache.mapper
+package co.joebirch.cache.mapper
 
-import com.deonolarewaju.cache.model.CachedProject
-import com.deonolarewaju.cache.test.factory.ProjectDataFactory
-import com.deonolarewaju.data.model.ProjectEntity
+import co.joebirch.cache.model.CachedProject
+import co.joebirch.cache.test.factory.ProjectDataFactory
+import co.joebirch.data.model.ProjectEntity
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.JUnit4
@@ -29,16 +29,14 @@ class CachedProjectMapperTest {
         assertEqualData(model, entity)
     }
 
-    private fun assertEqualData(
-        model: CachedProject,
-        entity: ProjectEntity
-    ) {
+    private fun assertEqualData(model: CachedProject,
+                                entity: ProjectEntity) {
         assertEquals(model.id, entity.id)
         assertEquals(model.fullName, entity.fullName)
         assertEquals(model.name, entity.name)
         assertEquals(model.dateCreated, entity.dateCreated)
         assertEquals(model.starCount, entity.starCount)
-        assertEquals(model.isBookMarked, entity.isBookmarked)
+        assertEquals(model.isBookmarked, entity.isBookmarked)
         assertEquals(model.ownerName, entity.ownerName)
         assertEquals(model.ownerAvatar, entity.ownerAvatar)
     }

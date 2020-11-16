@@ -1,8 +1,7 @@
-package com.deonolarewaju.presentation.mapper
+package co.joebirch.presentation.mapper
 
-import com.deonolarewaju.presentation.test.factory.ProjectFactory
-import org.junit.Assert.assertEquals
-
+import co.joebirch.presentation.test.factory.ProjectFactory
+import junit.framework.Assert.assertEquals
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.JUnit4
@@ -25,7 +24,6 @@ class ProjectViewMapperTest {
         assertEquals(project.ownerName, projectView.ownerName)
         assertEquals(project.ownerAvatar, projectView.ownerAvatar)
         assertEquals(project.isBookmarked, projectView.isBookmarked)
-
     }
 
 }

@@ -1,21 +1,15 @@
-apply plugin: 'java-library'
 apply plugin: 'kotlin'
 
 dependencies {
-
+    testImplementation domainTestDependencies.junit
     def domainDependencies = rootProject.ext.domainDependencies
     def domainTestDependencies = rootProject.ext.domainTestDependencies
-
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:1.3.72"
     implementation domainDependencies.javaxAnnotation
     implementation domainDependencies.javaxInject
     implementation domainDependencies.rxJava
-
-    testImplementation domainTestDependencies.junit
     testImplementation domainTestDependencies.mockito
     testImplementation domainTestDependencies.assertj
-    testImplementation domainTestDependencies.mockitoInline
 }
 
-sourceCompatibility = "1.7"
-targetCompatibility = "1.7"
+sourceCompatibility = "1.6"
+targetCompatibility = "1.6"

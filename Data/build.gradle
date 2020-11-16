@@ -1,8 +1,6 @@
-apply plugin: 'java-library'
 apply plugin: 'kotlin'
 
 dependencies {
-
     def dataDependencies = rootProject.ext.dataDependencies
     def dataTestDependencies = rootProject.ext.dataTestDependencies
 
@@ -16,9 +14,8 @@ dependencies {
     testImplementation dataTestDependencies.junit
     testImplementation dataTestDependencies.kotlinJUnit
     testImplementation dataTestDependencies.mockito
-    testImplementation dataTestDependencies.mockitoInline
     testImplementation dataTestDependencies.assertj
 }
 
-sourceCompatibility = "1.7"
-targetCompatibility = "1.7"
+sourceCompatibility = "1.6"
+targetCompatibility = "1.6"

@@ -1,18 +1,25 @@
-package com.deonolarewaju.presentation.browse
+package co.joebirch.presentation.browse
 
 import android.arch.core.executor.testing.InstantTaskExecutorRule
-import com.deonolarewaju.domain.interactor.bookmarked.BookmarkProject
-import com.deonolarewaju.domain.interactor.bookmarked.UnbookmarkProject
-import com.deonolarewaju.domain.interactor.browse.GetProjects
-import com.deonolarewaju.domain.model.Project
-import com.deonolarewaju.presentation.mapper.ProjectViewMapper
-import com.deonolarewaju.presentation.model.ProjectView
-import com.deonolarewaju.presentation.state.ResourceState
-import com.deonolarewaju.presentation.test.factory.DataFactory
-import com.deonolarewaju.presentation.test.factory.ProjectFactory
-import com.nhaarman.mockito_kotlin.*
+import co.joebirch.domain.interactor.bookmark.BookmarkProject
+import co.joebirch.domain.interactor.bookmark.UnbookmarkProject
+import co.joebirch.domain.interactor.browse.GetProjects
+import co.joebirch.domain.model.Project
+import co.joebirch.presentation.BrowseProjectsViewModel
+import co.joebirch.presentation.mapper.ProjectViewMapper
+import co.joebirch.presentation.model.ProjectView
+import co.joebirch.presentation.state.ResourceState
+import co.joebirch.presentation.test.factory.DataFactory
+import co.joebirch.presentation.test.factory.ProjectFactory
+import com.nhaarman.mockito_kotlin.any
+import com.nhaarman.mockito_kotlin.argumentCaptor
+import com.nhaarman.mockito_kotlin.eq
+import com.nhaarman.mockito_kotlin.mock
+import com.nhaarman.mockito_kotlin.times
+import com.nhaarman.mockito_kotlin.verify
+import com.nhaarman.mockito_kotlin.whenever
 import io.reactivex.observers.DisposableObserver
-import org.junit.Assert.assertEquals
+import junit.framework.Assert.assertEquals
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -28,13 +35,8 @@ class BrowseProjectsViewModelTest {
     var bookmarkProject = mock<BookmarkProject>()
     var unbookmarkProject = mock<UnbookmarkProject>()
     var projectMapper = mock<ProjectViewMapper>()
-    var projectViewModel =
-        BrowseProjectsViewModel(
-            getProjects,
-            bookmarkProject,
-            unbookmarkProject,
-            projectMapper
-        )
+    var projectViewModel = BrowseProjectsViewModel(getProjects,
+            bookmarkProject, unbookmarkProject, projectMapper)
 
     @Captor
     val captor = argumentCaptor<DisposableObserver<List<Project>>>()
@@ -42,11 +44,12 @@ class BrowseProjectsViewModelTest {
     @Test
     fun fetchProjectsExecutesUseCase() {
         projectViewModel.fetchProjects()
+
         verify(getProjects, times(1)).execute(any(), eq(null))
     }
 
     @Test
-    fun fetchProjectReturnsSuccess() {
+    fun fetchProjectsReturnsSuccess() {
         val projects = ProjectFactory.makeProjectList(2)
         val projectViews = ProjectFactory.makeProjectViewList(2)
         stubProjectMapperMapToView(projectViews[0], projects[0])
@@ -57,11 +60,12 @@ class BrowseProjectsViewModelTest {
         verify(getProjects).execute(captor.capture(), eq(null))
         captor.firstValue.onNext(projects)
 
-        assertEquals(ResourceState.SUCCESS, projectViewModel.getProjects().value?.status)
+        assertEquals(ResourceState.SUCCESS,
+                projectViewModel.getProjects().value.status)
     }
 
     @Test
-    fun fetchProjectReturnsData() {
+    fun fetchProjectsReturnsData() {
         val projects = ProjectFactory.makeProjectList(2)
         val projectViews = ProjectFactory.makeProjectViewList(2)
         stubProjectMapperMapToView(projectViews[0], projects[0])
@@ -72,35 +76,37 @@ class BrowseProjectsViewModelTest {
         verify(getProjects).execute(captor.capture(), eq(null))
         captor.firstValue.onNext(projects)
 
-        assertEquals(projectViews, projectViewModel.getProjects().value?.data)
+        assertEquals(projectViews,
+                projectViewModel.getProjects().value.data)
     }
 
     @Test
-    fun fetchProjectReturnsError() {
-
+    fun fetchProjectsReturnsError() {
         projectViewModel.fetchProjects()
 
         verify(getProjects).execute(captor.capture(), eq(null))
         captor.firstValue.onError(RuntimeException())
 
-        assertEquals(ResourceState.ERROR, projectViewModel.getProjects().value?.status)
+        assertEquals(ResourceState.ERROR,
+                projectViewModel.getProjects().value.status)
     }
 
     @Test
-    fun fetchProjectReturnsErrorMessage() {
+    fun fetchProjectsReturnsMessageForError() {
         val errorMessage = DataFactory.randomString()
         projectViewModel.fetchProjects()
 
         verify(getProjects).execute(captor.capture(), eq(null))
         captor.firstValue.onError(RuntimeException(errorMessage))
 
-        assertEquals(errorMessage, projectViewModel.getProjects().value?.message)
+        assertEquals(errorMessage,
+                projectViewModel.getProjects().value.message)
     }
 
-
-
-    private fun stubProjectMapperMapToView(projectView: ProjectView, project: Project) {
-        whenever(projectMapper.mapToView(project)).thenReturn(projectView)
+    private fun stubProjectMapperMapToView(projectView: ProjectView,
+                                           project: Project) {
+        whenever(projectMapper.mapToView(project))
+                .thenReturn(projectView)
     }
 
 }

@@ -1,6 +1,6 @@
-package com.deonolarewaju.cache.test.factory
+package co.joebirch.cache.test.factory
 
-import com.deonolarewaju.cache.model.Config
+import co.joebirch.cache.model.Config
 
 object ConfigDataFactory {
 

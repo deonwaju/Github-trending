@@ -1,4 +1,3 @@
 package com.deonolarewaju.remote.model
 
-class ProjectsResponseModel(val items: List<ProjectModel>) {
-}
+class ProjectsResponseModel(val items: List<ProjectModel>)

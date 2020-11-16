@@ -1,28 +1,24 @@
-package com.deonolarewaju.presentation.test.factory
+package co.joebirch.presentation.test.factory
 
-import com.deonolarewaju.domain.model.Project
-import com.deonolarewaju.presentation.model.ProjectView
+import co.joebirch.domain.model.Project
+import co.joebirch.presentation.model.ProjectView
 
 object ProjectFactory {
 
     fun makeProjectView(): ProjectView {
-        return ProjectView(
-            DataFactory.randomString(),
-            DataFactory.randomString(), DataFactory.randomString(),
-            DataFactory.randomString(), DataFactory.randomString(),
-            DataFactory.randomString(), DataFactory.randomString(),
-            DataFactory.randomBoolean()
-        )
+        return ProjectView(DataFactory.randomString(),
+                DataFactory.randomString(), DataFactory.randomString(),
+                DataFactory.randomString(), DataFactory.randomString(),
+                DataFactory.randomString(), DataFactory.randomString(),
+                DataFactory.randomBoolean())
     }
 
     fun makeProject(): Project {
-        return Project(
-            DataFactory.randomString(),
-            DataFactory.randomString(), DataFactory.randomString(),
-            DataFactory.randomString(), DataFactory.randomString(),
-            DataFactory.randomString(), DataFactory.randomString(),
-            DataFactory.randomBoolean()
-        )
+        return Project(DataFactory.randomString(),
+                DataFactory.randomString(), DataFactory.randomString(),
+                DataFactory.randomString(), DataFactory.randomString(),
+                DataFactory.randomString(), DataFactory.randomString(),
+                DataFactory.randomBoolean())
     }
 
     fun makeProjectViewList(count: Int): List<ProjectView> {
