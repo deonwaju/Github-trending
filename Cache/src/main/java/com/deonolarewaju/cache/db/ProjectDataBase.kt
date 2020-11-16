@@ -20,22 +20,24 @@ abstract class ProjectDataBase @Inject constructor() : RoomDatabase() {
 
     abstract fun configDao(): ConfigDao
 
-    private var INSTANCE: ProjectDataBase? = null
-    private var lock = Any()
+    companion object {
+        private var INSTANCE: ProjectDataBase? = null
+        private var lock = Any()
 
-    fun getInstance(context: Context): ProjectDataBase {
-        if (INSTANCE == null) {
-            synchronized(lock) {
-                if (INSTANCE == null) {
-                    INSTANCE = Room.databaseBuilder(
-                        context.applicationContext,
-                        ProjectDataBase::class.java, "projects.db"
-                    )
-                        .build()
+        fun getInstance(context: Context): ProjectDataBase {
+            if (INSTANCE == null) {
+                synchronized(lock) {
+                    if (INSTANCE == null) {
+                        INSTANCE = Room.databaseBuilder(
+                            context.applicationContext,
+                            ProjectDataBase::class.java, "projects.db"
+                        )
+                            .build()
+                    }
+                    return INSTANCE as ProjectDataBase
                 }
-                return INSTANCE as ProjectDataBase
             }
+            return INSTANCE as ProjectDataBase
         }
-        return INSTANCE as ProjectDataBase
     }
 }

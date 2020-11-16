@@ -6,11 +6,12 @@ import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import java.util.concurrent.TimeUnit
 
-class GithubTrendingServiceFactory {
+object GithubTrendingServiceFactory {
 
-    fun makeGithubTrendingService(isDebug: Boolean): GithubTrendingService {
+    open fun makeGithubTrendingService(isDebug: Boolean): GithubTrendingService {
         val okHttpClient = makeOkHttpClient(
-            makeLoggingInterceptor((isDebug)))
+            makeLoggingInterceptor((isDebug))
+        )
         return makeGithubTrendingService(okHttpClient)
     }
 
