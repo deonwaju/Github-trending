@@ -1,21 +1,31 @@
 # Github Trending
-Implemention android architecture with 5 layers, This app also follows the mvvm template with tests for each layer.
+Kotlin project used to fetch list of trending github projects with bookmark feature.
+Implement android architecture with 5 layers, This app also follows the mvvm template with tests for each layer.
 
 
 
 ## Notes
 - Layers
-    - Data 
-        - Model
-        - Repository
     - Domain
         - Model
         - UseCase
+    
+    - Data 
+        - Model
+        - Repository
+
+    - Cache 
+        - Database
+        - model
+
     - Presentation
         - Model
         - ViewModel
         - View
         - State
+    
+    - Mobile-Ui
+        - Ui
 
 - UseCases / Features can be found in the interactors folder in the domain package
 - Each package (which represents an abstraction/layer in the clean architecture model) has a
