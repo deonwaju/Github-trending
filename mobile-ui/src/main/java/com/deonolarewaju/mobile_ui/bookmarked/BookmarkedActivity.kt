@@ -44,6 +44,11 @@ class BookmarkedActivity: AppCompatActivity() {
         setupBrowseRecycler()
     }
 
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
+    }
+
     override fun onStart() {
         super.onStart()
         browseViewModel.getProjects().observe(this,

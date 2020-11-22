@@ -4,6 +4,7 @@ import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.LinearLayoutManager
 import android.view.Menu
 import android.view.MenuItem
@@ -71,6 +72,7 @@ class BrowseActivity : AppCompatActivity() {
         browseAdapter.projectListener = projectListener
         recycler_projects.layoutManager = LinearLayoutManager(this)
         recycler_projects.adapter = browseAdapter
+        recycler_projects.addItemDecoration(DividerItemDecoration(recycler_projects.context, DividerItemDecoration.VERTICAL))
     }
 
     private fun handleDataState(resource: Resource<List<ProjectView>>) {
