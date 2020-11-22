@@ -1,19 +1,7 @@
 # Github Trending
-Android Clean Architecture tutorial on Caster.io
+Implemention android architecture with 5 layers, This app also follows the mvvm template with tests for each layer.
 
-## Ending TODO
-- [x] Look over, understand, and format the activities and layouts in the mobile-ui module
-- [x] Fix the bugs and dependency injection issues
-- [x] Build the mobile-ui module successfully
-- [x] Move the instrumentation tests over to this project
-- [x] Test project
-- [x] Debug project to work on phone
-- [x] Test on phone
-- [ ] Clean up gradle files
-- [ ] Do a general code clean up (remove warnings as much as possible)
-- [ ] Fix UI things
-- [ ] Experiment
-- [ ] Done! Harness the power of Android dev to create more apps :D
+
 
 ## Notes
 - Layers
@@ -27,6 +15,8 @@ Android Clean Architecture tutorial on Caster.io
         - Model
         - ViewModel
         - View
+        - State
+
 - UseCases / Features can be found in the interactors folder in the domain package
 - Each package (which represents an abstraction/layer in the clean architecture model) has a
 build.gradle file that imports the project level dependencies.gradle file
